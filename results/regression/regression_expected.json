@@ -1,0 +1,61 @@
+{
+  "_scoring": "character error rate, punctuation stripped by the regex in decode_spec.json (text_normalisation.strip_regex), no case folding",
+  "_tolerance": "CER within 0.05 pp; edits exact if the environment is truly identical",
+  "_what_this_is": "Expected scores for the utterances in regression_manifest.csv. Score that manifest with the decode settings pinned in decode_spec.json and compare. A mismatch beyond the stated tolerance means the environment differs from the one the paper's numbers were produced in -- most likely a checkpoint that loaded with unmatched keys, or a decode setting that did not take effect.",
+  "cells": {
+    "qwen3asr_base": {
+      "cer": 38.372,
+      "edits": 462,
+      "per_speaker_cer": {
+        "CDSD_01": 12.917,
+        "CDSD_03": 68.067,
+        "CDSD_06": 95.312,
+        "CDSD_08": 44.231,
+        "CDSD_29": 31.76,
+        "CDSD_38": 17.411
+      },
+      "ref_chars": 1204
+    },
+    "qwen3asr_upper_s42": {
+      "cer": 33.389,
+      "edits": 402,
+      "per_speaker_cer": {
+        "CDSD_01": 9.167,
+        "CDSD_03": 49.58,
+        "CDSD_06": 91.406,
+        "CDSD_08": 47.308,
+        "CDSD_29": 21.888,
+        "CDSD_38": 13.393
+      },
+      "ref_chars": 1204
+    },
+    "whisper_small_all_s42": {
+      "cer": 54.568,
+      "edits": 657,
+      "per_speaker_cer": {
+        "CDSD_01": 33.333,
+        "CDSD_03": 63.866,
+        "CDSD_06": 96.094,
+        "CDSD_08": 74.615,
+        "CDSD_29": 45.494,
+        "CDSD_38": 34.821
+      },
+      "ref_chars": 1204
+    },
+    "whisper_small_base": {
+      "cer": 81.312,
+      "edits": 979,
+      "per_speaker_cer": {
+        "CDSD_01": 54.167,
+        "CDSD_03": 102.521,
+        "CDSD_06": 136.719,
+        "CDSD_08": 87.308,
+        "CDSD_29": 65.665,
+        "CDSD_38": 76.786
+      },
+      "ref_chars": 1204
+    }
+  },
+  "manifest_sha256": "686ba74b5fd502c02b1bdddc62dacc6b6eb45fdb631f18b616ab9b8e45c5f906",
+  "n_utterances": 180
+}

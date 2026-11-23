@@ -1,0 +1,6 @@
+contrast,mean,seed_sd,seed_min,seed_max,lo,hi,excludes_zero,sign_stable_across_seeds
+upper-middle,-2.206,0.435,-2.578,-1.728,-4.341,-0.567,True,True
+upper-all,1.662,0.571,1.014,2.09,-0.152,4.316,False,True
+all-middle,-3.869,0.305,-4.195,-3.592,-6.979,-1.341,True,True
+upper-lower,-17.441,0.537,-17.906,-16.853,-24.429,-10.028,True,True
+lower-middle,15.234,0.319,14.985,15.593,8.858,21.504,True,True

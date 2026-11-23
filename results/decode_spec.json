@@ -1,0 +1,102 @@
+{
+  "_what_this_is": "The decode and scoring configuration behind every number in Paper 10a. Section 6.6.1 documents a correction in which generation settings alone moved Whisper-small CER by tens of points and pushed unadapted CER above 100%, so these settings are part of the result rather than an implementation detail. Reproduce with these values; verify with results/regression/.",
+  "spec_version": "1.0",
+  "paper": "Phoneme-identity depth profiles do not reliably predict LoRA placement for dysarthric ASR (10a)",
+  "environment": {
+    "python": "3.11",
+    "torch": "2.12.1+cu130",
+    "transformers": "5.14.1",
+    "peft": "0.20.0",
+    "cuda": "13.0",
+    "device": "NVIDIA GB10, 128 GB unified memory",
+    "_transformers_warning": "transformers 5.x is REQUIRED for Qwen3-ASR (4.57.x has no qwen3_asr model type) and is also the version in which a plain from_pretrained silently returns a randomly initialised model -- see checkpoint_loading below. The training and evaluation environments differ; scripts name their interpreter explicitly rather than inheriting whichever is active."
+  },
+  "models": {
+    "qwen3asr": {
+      "checkpoint": "Qwen/Qwen3-ASR-1.7B",
+      "encoder": "audio_tower, 24 blocks, width 1024",
+      "inference_path": "the model's own packaged transcribe() interface",
+      "language_argument": "the corpus language, passed explicitly (zh for CDSD, en for UASpeech)"
+    },
+    "whisper_small": {
+      "checkpoint": "openai/whisper-small",
+      "encoder": "encoder, 12 blocks, width 768",
+      "dtype": "bfloat16",
+      "batch_size": 16,
+      "forced_decoder_ids": "processor.get_decoder_prompt_ids(language=<corpus language>, task='transcribe')"
+    }
+  },
+  "generation": {
+    "profile": "fixed",
+    "_profiles": {
+      "fixed": "the corrected decode; all published Whisper numbers use this",
+      "published": "the original artefact-carrying decode, greedy with a flat max_new_tokens=200, kept runnable so Section 6.6.1's comparison can be reproduced rather than taken on trust"
+    },
+    "num_beams": 5,
+    "no_repeat_ngram_size": 3,
+    "do_sample": false,
+    "max_new_tokens_rule": {
+      "description": "Duration-scaled upper bound, not a flat cap. A flat small cap would trade the insertion artefact for a deletion one: CDSD reaches 18.3 s and UASpeech 19.5 s. Batched generation shares one bound, so the batch MAXIMUM duration sets it. Shorter utterances still stop at EOS on their own; the cap is only a ceiling.",
+      "formula": "clamp(int(max_duration_seconds_in_batch * 16 + 12), 24, 200)",
+      "tokens_per_second": 16,
+      "slack": 12,
+      "min": 24,
+      "max": 200
+    },
+    "stopping": "the model's own EOS; no custom stopping criteria",
+    "sampling_flags": "none -- deterministic beam search, no temperature, top_k or top_p"
+  },
+  "audio": {
+    "sample_rate": 16000,
+    "channels": 1,
+    "resampling": "torchaudio.transforms.Resample"
+  },
+  "scoring": {
+    "primary_metric_by_corpus": {
+      "CDSD": "CER (character), the standard for Mandarin",
+      "UASpeech": "WER primary, CER secondary -- isolated single words make CER a distance on strings of a handful of characters"
+    },
+    "case_fold": {
+      "CDSD": false,
+      "UASpeech": true,
+      "_why": "Whisper and Qwen3-ASR both emit capitalised text while UASpeech references are lowercase; without folding, every initial letter scores as a substitution"
+    },
+    "tokenise": {
+      "CDSD": "char",
+      "UASpeech": "word for WER, char for CER"
+    },
+    "text_normalisation": {
+      "strip_regex": "[\\s，。！？、；：“”‘’（）《》,.!?;:\\\"'()\\[\\]<>—-]+",
+      "strip_regex_keepspace": "[，。！？、；：“”‘’（）《》,.!?;:\\\"'()\\[\\]<>—-]+",
+      "_note": "The first removes whitespace and punctuation for character scoring; the second replaces punctuation with a space, preserving word boundaries, for word scoring. Both evaluators use identical regexes -- a mismatch between the two arms would look like a model difference."
+    },
+    "edit_distance": "Levenshtein over the token list, unweighted",
+    "aggregation": {
+      "micro": "pool edits and reference lengths across utterances, then divide (length-weighted)",
+      "macro": "per-speaker CER, then the unweighted mean over speakers"
+    }
+  },
+  "checkpoint_loading": {
+    "_why_this_is_here": "This project has already seen a load path that produced an apparently working model with ZERO checkpoint-key overlap. It is the single most dangerous silent failure in the pipeline: the model is randomly initialised, decodes fluently, and scores plausibly.",
+    "problem": "Qwen3-ASR checkpoints store weights under the pre-restructure thinker.* namespace. transformers 5.14 expects model.* and ships no _checkpoint_conversion_mapping, so from_pretrained matches 0 of 710 parameters and reports it only as a scrollable warning block.",
+    "remedy": "scripts/layerprobe/qwen3asr_compat.py::load_qwen3_asr applies the key remapping and ASSERTS zero unmatched parameters, refusing to load otherwise.",
+    "key_remapping": {
+      "thinker.audio_tower.proj1.": "model.multi_modal_projector.linear_1.",
+      "thinker.audio_tower.proj2.": "model.multi_modal_projector.linear_2.",
+      "thinker.audio_tower.": "model.audio_tower.",
+      "thinker.multi_modal_projector.": "model.multi_modal_projector.",
+      "thinker.lm_head.": "lm_head.",
+      "thinker.model.": "model.language_model."
+    },
+    "config_trap": "AutoConfig.from_pretrained returns DEFAULT sub-configs; the real ones are nested under thinker_config. The defaults coincide on most fields but set audio_config.output_dim to 3584 against the checkpoint's 2048, building the multi-modal projector at the wrong width. Sub-config model_type strings are also stale: qwen3_asr_audio_encoder -> qwen3_asr_encoder, qwen3_asr_text -> qwen3."
+  },
+  "adapter_merging": {
+    "device": "cpu",
+    "_why": "peft loads an adapter onto CUDA by default before merging. On unified-memory hardware, merging a rank-192 adapter into a 1.7B model then exhausts the shared pool and the process is killed with no error identifying merging as the cause. Load base and adapter on CPU, merge there, save, and only then move to device."
+  },
+  "verification": {
+    "regression_manifest": "results/regression/regression_manifest.csv",
+    "expected_scores": "results/regression/regression_expected.json",
+    "how": "Score the 180 listed utterances with the settings above and compare against the expected CER per cell. A mismatch beyond 0.05 pp means the environment differs from the one the paper's numbers came from."
+  }
+}

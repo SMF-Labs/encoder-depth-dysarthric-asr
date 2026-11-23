@@ -1,0 +1,6 @@
+variant,path,n,cer,wer,cer_rel_vs_all_pct,per_severity_cer,per_speaker_cer,elapsed_s
+base,Qwen/Qwen3-ASR-1.7B,3798,41.947,74.993,+28.44%,"{""mild"": 8.84, ""severe"": 64.25}","{""F03"": 87.35, ""M05"": 41.36, ""M07"": 64.75, ""M09"": 11.67, ""M10"": 6.0}",215.2
+upper,models/layerprobe_lora_uaspeech/upper__da8737a854/merged,3798,34.189,53.126,+4.68%,"{""mild"": 5.34, ""severe"": 53.62}","{""F03"": 83.11, ""M05"": 27.8, ""M07"": 50.87, ""M09"": 7.21, ""M10"": 3.46}",108.7
+middle,models/layerprobe_lora_uaspeech/middle__9c643e6526/merged,3798,37.612,63.641,+15.17%,"{""mild"": 6.62, ""severe"": 58.49}","{""F03"": 83.46, ""M05"": 36.85, ""M07"": 55.93, ""M09"": 8.22, ""M10"": 5.02}",196.4
+all,models/layerprobe_lora_uaspeech/all__30ef797b74/merged,3798,32.659,47.711,+0.00%,"{""mild"": 4.65, ""severe"": 51.52}","{""F03"": 81.38, ""M05"": 29.38, ""M07"": 44.74, ""M09"": 6.18, ""M10"": 3.12}",123.4
+lower,models/layerprobe_lora_uaspeech/lower__00c9905c9e/merged,3798,52.023,91.813,+59.29%,"{""mild"": 20.06, ""severe"": 73.56}","{""F03"": 91.56, ""M05"": 52.54, ""M07"": 77.11, ""M09"": 30.41, ""M10"": 9.68}",247.9

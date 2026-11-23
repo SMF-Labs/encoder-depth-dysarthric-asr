@@ -1,0 +1,8 @@
+model,layer,per_tone_sensitive,per_tone_agnostic,val_per,n_train,n_test
+whisper_pad750,0,98.177,97.258,97.606,837,162
+whisper_pad750,1,86.531,82.714,85.536,837,162
+whisper_pad750,2,80.939,76.626,83.142,837,162
+whisper_pad750,3,71.61,69.424,75.139,837,162
+whisper_pad750,4,60.55,62.965,59.659,837,162
+whisper_pad750,5,53.537,54.043,54.969,837,162
+whisper_pad750,6,66.636,66.171,69.072,837,162

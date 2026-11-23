@@ -1,0 +1,6 @@
+variant,path,n,cer,wer,cer_rel_vs_all_pct,per_severity_cer,per_speaker_cer,elapsed_s
+base,Qwen/Qwen3-ASR-1.7B,5388,32.06,32.06,,"{""moderate"": 23.91, ""severe"": 74.55}","{""CDSD_01"": 13.21, ""CDSD_03"": 53.29, ""CDSD_06"": 91.78, ""CDSD_08"": 39.42, ""CDSD_29"": 27.38, ""CDSD_38"": 16.87}",296.1
+upper_r64_s44,layerprobe_lora/upper__fbf65b5992/merged,5388,29.708,29.708,,"{""moderate"": 22.58, ""severe"": 66.88}","{""CDSD_01"": 9.03, ""CDSD_03"": 44.35, ""CDSD_06"": 85.14, ""CDSD_08"": 50.37, ""CDSD_29"": 20.17, ""CDSD_38"": 13.54}",302.4
+all_r21_s44,layerprobe_lora/all__b19417ab67/merged,5388,30.772,30.772,,"{""moderate"": 23.84, ""severe"": 66.93}","{""CDSD_01"": 10.19, ""CDSD_03"": 43.0, ""CDSD_06"": 86.32, ""CDSD_08"": 52.75, ""CDSD_29"": 21.39, ""CDSD_38"": 13.94}",288.1
+upper_r192_s44,layerprobe_lora/upper__b11a85f373/merged,5388,29.957,29.957,,"{""moderate"": 22.68, ""severe"": 67.88}","{""CDSD_01"": 9.66, ""CDSD_03"": 44.73, ""CDSD_06"": 86.63, ""CDSD_08"": 50.98, ""CDSD_29"": 20.21, ""CDSD_38"": 12.77}",317.6
+all_r64_s44,layerprobe_lora/all__fc012afe25/merged,5388,31.197,31.197,,"{""moderate"": 24.32, ""severe"": 67.06}","{""CDSD_01"": 11.6, ""CDSD_03"": 42.72, ""CDSD_06"": 86.77, ""CDSD_08"": 52.65, ""CDSD_29"": 22.22, ""CDSD_38"": 13.68}",255.4

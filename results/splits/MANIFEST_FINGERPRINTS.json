@@ -1,0 +1,110 @@
+{
+  "cdsd_lora_manifest_splits.csv": {
+    "description": "CDSD adaptation (LoRA) manifest; 33,617-utterance matched volume",
+    "n_utterances": 47687,
+    "released_rows_sha256": "8cd5e3c86868c40ab8ef3378d482f412e6c34cc56d9c250f792ed45191d95006",
+    "source_manifest": "cdsd_lora_manifest.jsonl",
+    "source_manifest_sha256": "53e4cd6624d446ebd5f2fdfb86242bcfbd00e4720ddf71b6fe252d514a7439e4",
+    "speaker_disjoint": true,
+    "speakers_per_split": {
+      "test": 6,
+      "train": 31,
+      "val": 7
+    },
+    "utterances_per_split": {
+      "test": 5388,
+      "train": 33617,
+      "val": 8682
+    }
+  },
+  "cdsd_probe_manifest_FULL_splits.csv": {
+    "description": "CDSD probe manifest at the full 33,617-utterance volume (s5.5)",
+    "n_utterances": 47687,
+    "released_rows_sha256": "8cd5e3c86868c40ab8ef3378d482f412e6c34cc56d9c250f792ed45191d95006",
+    "source_manifest": "cdsd_probe_manifest_FULL.jsonl",
+    "source_manifest_sha256": "53e4cd6624d446ebd5f2fdfb86242bcfbd00e4720ddf71b6fe252d514a7439e4",
+    "speaker_disjoint": true,
+    "speakers_per_split": {
+      "test": 6,
+      "train": 31,
+      "val": 7
+    },
+    "utterances_per_split": {
+      "test": 5388,
+      "train": 33617,
+      "val": 8682
+    }
+  },
+  "cdsd_probe_manifest_TR15K_splits.csv": {
+    "description": "CDSD probe manifest at 15,000 training utterances",
+    "n_utterances": 22388,
+    "released_rows_sha256": "c8002c3e1b115ba30da5ec258fc07c51f00bdbf718f43c500ae4f9ad0a0021a6",
+    "source_manifest": "cdsd_probe_manifest_TR15K.jsonl",
+    "source_manifest_sha256": "42891ddbd5f9a450c6546f6cc6f6af12944012248992fb120fb3fec862596b84",
+    "speaker_disjoint": true,
+    "speakers_per_split": {
+      "test": 6,
+      "train": 31,
+      "val": 7
+    },
+    "utterances_per_split": {
+      "test": 5388,
+      "train": 15000,
+      "val": 2000
+    }
+  },
+  "cdsd_probe_manifest_splits.csv": {
+    "description": "CDSD probe manifest at 6,200 training utterances",
+    "n_utterances": 8800,
+    "released_rows_sha256": "6b12de3d9417e91baab87e6d925ec1a1fd515c9098ea9c237722376ac44f5c94",
+    "source_manifest": "cdsd_probe_manifest.jsonl",
+    "source_manifest_sha256": "9b0ef2bdccc69175c7afae314525bc8f9b7a4c3a908c5db4f1a8f8fed77382a1",
+    "speaker_disjoint": true,
+    "speakers_per_split": {
+      "test": 6,
+      "train": 31,
+      "val": 7
+    },
+    "utterances_per_split": {
+      "test": 1200,
+      "train": 6200,
+      "val": 1400
+    }
+  },
+  "uaspeech_lora_manifest_splits.csv": {
+    "description": "UASpeech adaptation (LoRA) manifest",
+    "n_utterances": 11402,
+    "released_rows_sha256": "4ba79e18db96d40e16777e9232b06717102f456401229d378d59c4cef89d862f",
+    "source_manifest": "uaspeech_lora_manifest.jsonl",
+    "source_manifest_sha256": "b3e78bd52b9d561b500dc37a14c5d369e27701afd53d37325a81689c9803f1bc",
+    "speaker_disjoint": true,
+    "speakers_per_split": {
+      "test": 5,
+      "train": 8,
+      "val": 2
+    },
+    "utterances_per_split": {
+      "test": 3798,
+      "train": 6075,
+      "val": 1529
+    }
+  },
+  "uaspeech_probe_manifest_splits.csv": {
+    "description": "UASpeech probe manifest",
+    "n_utterances": 11222,
+    "released_rows_sha256": "321dcf6a5925997d20d7d4b842a6570ec2625fece13b37ad854d9c428fde5865",
+    "source_manifest": "uaspeech_probe_manifest.jsonl",
+    "source_manifest_sha256": "e704a499b64f098e8ba5cbfd09e88f8a3840634c084e5658a28aa118a4e1320c",
+    "speaker_disjoint": true,
+    "speakers_per_split": {
+      "test": 5,
+      "train": 8,
+      "val": 2
+    },
+    "utterances_per_split": {
+      "test": 3738,
+      "train": 5979,
+      "val": 1505
+    }
+  }
+}

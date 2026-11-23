@@ -1,0 +1,6 @@
+variant,path,n,cer,wer,per_difficulty_cer,per_speaker_cer,elapsed_s
+base,NONE,3798,59.095,118.781,"{""mild"": 22.0, ""severe"": 84.08}","{""F03"": 100.17, ""M05"": 56.84, ""M07"": 95.71, ""M09"": 29.48, ""M10"": 14.51}",202.0
+lower_s44,layerprobe_lora_whisper/lower__e86e41a6ad/adapter,3798,51.12,87.994,"{""mild"": 22.59, ""severe"": 70.34}","{""F03"": 90.61, ""M05"": 45.03, ""M07"": 75.99, ""M09"": 32.81, ""M10"": 12.34}",185.2
+middle_s44,layerprobe_lora_whisper/middle__c1a9fed237/adapter,3798,46.862,74.837,"{""mild"": 14.65, ""severe"": 68.56}","{""F03"": 90.39, ""M05"": 43.09, ""M07"": 72.87, ""M09"": 20.85, ""M10"": 8.43}",169.9
+upper_s44,layerprobe_lora_whisper/upper__1893a49ab1/adapter,3798,44.342,65.681,"{""mild"": 17.24, ""severe"": 62.6}","{""F03"": 85.96, ""M05"": 34.28, ""M07"": 68.27, ""M09"": 22.93, ""M10"": 11.53}",166.1
+all_s44,layerprobe_lora_whisper/all__572ef8f35b/adapter,3798,40.103,59.116,"{""mild"": 13.52, ""severe"": 58.01}","{""F03"": 81.77, ""M05"": 32.79, ""M07"": 60.2, ""M09"": 18.72, ""M10"": 8.31}",185.6

@@ -1,0 +1,2 @@
+variant,path,n,cer,wer,cer_rel_vs_all_pct,per_severity_cer,per_speaker_cer,elapsed_s
+lower,models/layerprobe_lora/lower__9989ce22d4/merged,5388,38.227,38.227,,"{""moderate"": 31.75, ""severe"": 71.99}","{""CDSD_01"": 10.82, ""CDSD_03"": 50.11, ""CDSD_06"": 89.72, ""CDSD_08"": 63.2, ""CDSD_29"": 23.81, ""CDSD_38"": 32.38}",385.9

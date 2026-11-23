@@ -1,0 +1,32 @@
+# Full GPU pipeline -- training, feature extraction, probing and decoding.
+# Needs the corpora, which are not redistributable; see Data and licensing.
+#
+#   python -m venv .venv-pipeline && . .venv-pipeline/bin/activate
+#   pip install -r requirements-pipeline.txt
+#
+# TWO ENVIRONMENTS ARE REQUIRED, and this file describes the EVALUATION one.
+# Section 10 and results/decode_spec.json explain why: the trainer needs a transformers release that
+# the packaged inference path does not accept, and the evaluator needs one that will load the
+# Qwen3-ASR checkpoint without silently initialising it at random. Running the evaluator from the
+# trainer's environment is the failure that produces plausible-looking but meaningless CER, so the
+# released scripts name their interpreter explicitly rather than inheriting whichever is active.
+#
+# transformers 5.x is REQUIRED for Qwen3-ASR: 4.57.x has no qwen3_asr model type. It is also the
+# version in which a plain from_pretrained returns a randomly initialised model, which is why every
+# load goes through scripts/qwen3asr_compat.py -- it remaps the checkpoint keys and asserts zero
+# unmatched parameters.
+#
+# torch is pinned to the CUDA 13.0 build used on the GB10 workstation. Install it from the index
+# matching your own CUDA version rather than taking this pin verbatim:
+#   pip install torch==2.12.1 --index-url https://download.pytorch.org/whl/cu130
+
+torch==2.12.1
+torchaudio==2.12.1
+transformers==5.14.1
+peft==0.20.0
+numpy==2.2.5
+soundfile
+matplotlib==3.10.8
+
+# Forced alignment for the probe datasets is Montreal Forced Aligner, installed via conda rather
+# than pip; see the Pipeline section of the README.

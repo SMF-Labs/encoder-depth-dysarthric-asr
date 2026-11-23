@@ -1,0 +1,8 @@
+model,layer,per_tone_sensitive,per_tone_agnostic,val_per,n_train,n_test
+whisper_slice_matched,0,97.961,96.933,97.081,837,162
+whisper_slice_matched,1,94.501,93.216,93.276,837,162
+whisper_slice_matched,2,92.586,92.89,90.226,837,162
+whisper_slice_matched,3,91.813,91.914,88.98,837,162
+whisper_slice_matched,4,89.466,88.801,88.193,837,162
+whisper_slice_matched,5,87.89,86.803,91.473,837,162
+whisper_slice_matched,6,90.547,91.217,88.718,837,162

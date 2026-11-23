@@ -1,0 +1,16 @@
+# Analysis and figure regeneration -- no GPU, no corpus, no model weights.
+#
+# This is all that is needed to reproduce every released artefact:
+#   python scripts/make_figures.py         -> the paper's four figures
+#   python scripts/canonical_numbers.py    -> results/canonical_numbers.json
+#   python scripts/interaction_test.py     -> the paper's primary claim
+#   python scripts/lora_param_count.py     -> the Section 6.7 parameter budgets (stdlib only)
+#
+#   python -m venv .venv && . .venv/bin/activate   # Windows: .venv\Scripts\activate
+#   pip install -r requirements-analysis.txt
+#
+# Versions are the ones the released outputs were produced with. The bootstrap scripts seed
+# numpy's default_rng explicitly, so intervals are reproducible across patch versions.
+
+numpy==2.2.5
+matplotlib==3.10.8

@@ -1,0 +1,2 @@
+variant,path,n,cer,wer,cer_rel_vs_all_pct,per_severity_cer,per_speaker_cer,elapsed_s
+lower_s43,models/layerprobe_lora_uaspeech/lower__c01a47d281/merged,3798,52.288,92.597,,"{""mild"": 19.8, ""severe"": 74.17}","{""F03"": 91.33, ""M05"": 53.55, ""M07"": 78.15, ""M09"": 30.34, ""M10"": 9.25}",262.4

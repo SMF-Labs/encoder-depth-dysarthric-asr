@@ -1,0 +1,6 @@
+variant,path,n,cer,per_difficulty_cer,per_speaker_cer,elapsed_s
+base,NONE,5388,103.574,"{""moderate"": 80.58, ""severe"": 223.45}","{""CDSD_01"": 73.12, ""CDSD_03"": 118.87, ""CDSD_06"": 308.19, ""CDSD_08"": 104.77, ""CDSD_29"": 67.94, ""CDSD_38"": 79.5}",260.2
+lower,models/layerprobe_lora_whisper/lower__617a19ba55/adapter,5388,60.841,"{""moderate"": 55.18, ""severe"": 90.35}","{""CDSD_01"": 41.81, ""CDSD_03"": 73.07, ""CDSD_06"": 104.35, ""CDSD_08"": 82.85, ""CDSD_29"": 50.24, ""CDSD_38"": 48.72}",195.6
+middle,models/layerprobe_lora_whisper/middle__2233834c1b/adapter,5388,58.55,"{""moderate"": 54.04, ""severe"": 82.05}","{""CDSD_01"": 38.06, ""CDSD_03"": 62.58, ""CDSD_06"": 97.82, ""CDSD_08"": 83.06, ""CDSD_29"": 50.83, ""CDSD_38"": 47.11}",190.8
+upper,models/layerprobe_lora_whisper/upper__8899948325/adapter,5388,59.777,"{""moderate"": 55.07, ""severe"": 84.3}","{""CDSD_01"": 43.36, ""CDSD_03"": 63.82, ""CDSD_06"": 100.89, ""CDSD_08"": 80.85, ""CDSD_29"": 50.29, ""CDSD_38"": 48.53}",186.8
+all,models/layerprobe_lora_whisper/all__649a6f2047/adapter,5388,55.386,"{""moderate"": 51.49, ""severe"": 75.68}","{""CDSD_01"": 38.9, ""CDSD_03"": 59.65, ""CDSD_06"": 88.66, ""CDSD_08"": 81.34, ""CDSD_29"": 48.21, ""CDSD_38"": 40.62}",219.6
